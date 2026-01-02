@@ -46,7 +46,7 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
         
         {error && (
           <p id={errorId} className="mt-1 text-sm text-red-600" role="alert">
-            {error.message}
+            {typeof error === 'string' ? error : error.message}
           </p>
         )}
       </div>

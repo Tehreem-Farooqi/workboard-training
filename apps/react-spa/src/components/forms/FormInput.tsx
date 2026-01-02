@@ -46,7 +46,7 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
         
         {error && (
           <p id={errorId} className="mt-1 text-sm text-red-600" role="alert">
-            {error.message}
+            {typeof error === 'string' ? error : error.message}
           </p>
         )}
       </div>
