@@ -6,16 +6,55 @@ import type {
   CreateProjectDto, 
   UpdateProjectDto 
 } from '../types/project';
+import type { ProjectFilters, PaginationParams } from '../utils/filterTypes';
 
 const USE_MOCK_API = true;
 
 export const projectsApi = {
-  getProjects: async (): Promise<ProjectsResponse> => {
+  getProjects: async (
+    filters?: ProjectFilters,
+    pagination?: PaginationParams
+  ): Promise<ProjectsResponse> => {
     if (USE_MOCK_API) {
       const projects = await mockServer.getProjects();
-      return { projects, total: projects.length };
+      
+      // Apply filters
+      let filtered = projects;
+      if (filters?.search) {
+        const searchLower = filters.search.toLowerCase();
+        filtered = filtered.filter(p => 
+          p.name.toLowerCase().includes(searchLower) ||
+          p.description?.toLowerCase().includes(searchLower)
+        );
+      }
+      if (filters?.status && filters.status !== 'all') {
+        filtered = filtered.filter(p => p.status === filters.status);
+      }
+
+      // Apply pagination
+      const total = filtered.length;
+      const page = pagination?.page ?? 1;
+      const pageSize = pagination?.pageSize ?? 10;
+      const totalPages = Math.ceil(total / pageSize);
+      const start = (page - 1) * pageSize;
+      const paginated = filtered.slice(start, start + pageSize);
+
+      return { 
+        projects: paginated, 
+        total, 
+        page, 
+        pageSize, 
+        totalPages 
+      };
     }
-    return apiClient.get<ProjectsResponse>('/projects');
+    // Real API would pass query params
+    const params = new URLSearchParams();
+    if (filters?.search) params.set('search', filters.search);
+    if (filters?.status) params.set('status', filters.status);
+    if (pagination?.page) params.set('page', String(pagination.page));
+    if (pagination?.pageSize) params.set('pageSize', String(pagination.pageSize));
+    
+    return apiClient.get<ProjectsResponse>(`/projects?${params}`);
   },
 
   getProject: async (id: string): Promise<Project> => {
