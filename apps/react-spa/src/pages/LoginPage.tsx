@@ -1,19 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useAuthStore } from '../stores/authStore';
+import { useUIStore } from '../stores/uiStore';
+import { loginSchema } from '../schemas/auth.schema';
+import type { LoginFormData } from '../schemas/auth.schema';
+import { FormInput } from '../components/forms/FormInput';
 import { Button } from '../components/ui/Button';
-import { Input } from '../components/ui/Input';
 import { Card } from '../components/ui/Card';
 
 export function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { login, isAuthenticated } = useAuth();
-  
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const { login, isAuthenticated } = useAuthStore();
+  const addToast = useUIStore((state) => state.addToast);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    setError,
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+
   // Redirect if already authenticated
   useEffect(() => {
     if (isAuthenticated) {
@@ -21,54 +36,63 @@ export function LoginPage() {
       navigate(from, { replace: true });
     }
   }, [isAuthenticated, navigate, location]);
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    setIsLoading(true);
+
+  const onSubmit = async (data: LoginFormData) => {
     try {
-      await login(email, password);
+      await login(data.email, data.password);
       
-      // Navigation will happen automatically via useEffect above
+      // Show success toast
+      addToast({
+        type: 'success',
+        message: 'Login successful! Welcome back.',
+      });
+
+      // Navigation happens automatically via useEffect
     } catch (err) {
-      setError('Login failed. Please check your credentials.');
-    } finally {
-      setIsLoading(false);
+      setError('root', {
+        message: 'Login failed. Please check your credentials.',
+      });
+
+      // Show error toast
+      addToast({
+        type: 'error',
+        message: 'Login failed. Please try again.',
+      });
     }
   };
+
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <h1 className="text-2xl font-bold text-gray-900 mb-6">
           Login to WorkBoard
         </h1>
-        
-        {error && (
+
+        {errors.root && (
           <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-md">
-            <p className="text-sm text-red-600">{error}</p>
+            <p className="text-sm text-red-600">{errors.root.message}</p>
           </div>
         )}
-        <form onSubmit={handleLogin} className="space-y-4">
-          <Input
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <FormInput
             label="Email"
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@example.com"
-            required
-            disabled={isLoading}
+            error={errors.email}
+            disabled={isSubmitting}
+            {...register('email')}
           />
-          <Input
+
+          <FormInput
             label="Password"
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="••••••••"
-            required
-            disabled={isLoading}
-            minLength={8}
+            error={errors.password}
+            disabled={isSubmitting}
+            {...register('password')}
           />
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? 'Signing in...' : 'Sign In'}
+
+          <Button type="submit" className="w-full" disabled={isSubmitting}>
+            {isSubmitting ? 'Signing in...' : 'Sign In'}
           </Button>
         </form>
       </Card>
