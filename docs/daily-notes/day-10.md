@@ -3,7 +3,7 @@
 **Date**: January 9, 2026
 
 ## Results
- **8 test files | 30 tests passed**  
+ **9 test files | 33 tests passed**  
  **Coverage**: ~35-37% overall, 100% on tested modules  
  **Non-flaky, reliable tests**  
  **MSW covers success/error states**
@@ -25,11 +25,11 @@ All files                 34.66      37.1      34.86     37.2
 
 ## What Was Tested
 
-**Unit Tests (10 tests)**
+**Unit Tests (13 tests)**
 - `authStore` - login, logout, state
 - `uiStore` - toasts add/remove
 - `secureStorage` - localStorage wrapper
-- `useDebounce` - debounce logic
+- `useDebounce` - debounce logic (2 test files)
 
 **Component Tests (14 tests)**
 - `FormInput` - label, error, onChange, disabled, required
@@ -78,7 +78,7 @@ npm run test:coverage     # Coverage report
 1. **vitest.config.ts** - ES modules, path alias, coverage
 2. **Custom render** - Wraps components with Router + React Query
 3. **Type-safe imports** - `import type` for TS types
-4. **No fake timers** - Real timeouts for stability
+4. **Fake timers with act()** - For debounce tests, wrapped in act()
 5. **MSW service worker** - Generated via `npx msw init public/`
 
 ---
@@ -90,7 +90,7 @@ npm run test:coverage     # Coverage report
 3. jest-dom matchers → Added type declarations
 4. Component prop mismatches → Fixed to actual APIs
 5. MSW response shape → Matched real API structure
-6. Debounce flakiness → Increased waitFor timeout
+6. Debounce with fake timers → Wrapped `advanceTimersByTime` in `act()`
 
 ---
 
@@ -105,5 +105,15 @@ npm run test:coverage     # Coverage report
 
 ---
 
-## tomorrow 
-- day 11 Next.js App Router basics: routing and layouts
+## Notes
+
+- Tests run in ~15s (coverage mode)
+- Zero flaky tests
+- Coverage in `coverage/` dir
+- MSW optional for dev mode
+- Vitest UI available at `npm run test:ui`
+
+---
+
+## Tomorrow 
+- Day 11: Next.js App Router basics - routing and layouts
