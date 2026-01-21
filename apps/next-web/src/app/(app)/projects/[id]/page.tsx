@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         type: 'website',
       },
     };
-  } catch (error) {
+  } catch {
     return {
       title: 'Project',
       description: 'View project details and tasks',

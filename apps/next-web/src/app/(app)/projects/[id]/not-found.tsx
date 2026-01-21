@@ -11,7 +11,7 @@ export default function ProjectNotFound() {
           Project Not Found
         </h2>
         <p className="text-gray-600 mb-6">
-          The project you're looking for doesn't exist or has been deleted.
+          The project you&apos;re looking for doesn&apos;t exist or has been deleted.
         </p>
         <div className="flex gap-3 justify-center">
           <Link href="/projects">
