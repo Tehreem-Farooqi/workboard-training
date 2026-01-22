@@ -80,19 +80,7 @@
 
 - Challenge 3: Card Component Doesn't Accept onClick
 
-## ✅ Day 9: Accessibility and UX Polish (Ready to Start!)
-
-See [day-09-implementation-guide.md](day-09-implementation-guide.md) for complete step-by-step instructions.
-
-**Build Steps**:
-- Keyboard navigation pass: modals, forms, menus
-- Focus management and escape-to-close for modals
-- A11y notes: headings, landmarks, contrast
-
-**Resources Created**:
-- 📖 [Implementation Guide](day-09-implementation-guide.md) - Complete walkthrough
-- ✅ [A11y Checklist](../architecture/a11y-checklist.md) - Testing & compliance
-- 📝 [Day 09 Notes](day-09.md) - Daily progress tracker
+Daily progress tracker
 
 ##  Personal Notes
 
