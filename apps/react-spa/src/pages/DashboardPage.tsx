@@ -4,7 +4,7 @@ import { Card } from '../components/ui/Card';
 export function DashboardPage() {
   // Set document title for screen readers and browser tab
   useEffect(() => {
-    document.title = 'Dashboard | WorkBoard';
+    document.title = 'Dashboard  WorkBoard';
   }, []);
 
   return (
