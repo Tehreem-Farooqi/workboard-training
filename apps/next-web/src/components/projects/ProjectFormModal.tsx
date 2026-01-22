@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { projectCreateSchema, projectUpdateSchema, type ProjectCreateFormData } from '@/schemas/project.schema';
+import { projectCreateSchema, projectUpdateSchema, type ProjectCreateFormData, type ProjectUpdateFormData } from '@/schemas/project.schema';
 import { Input } from '../ui/Input';
 import { FormTextarea } from '../forms/FormTextarea';
 import { Button } from '../ui/Button';
@@ -12,7 +12,7 @@ import type { Project } from '@/types/project';
 interface ProjectFormModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (data: any) => Promise<void>;
+  onSubmit: (data: ProjectCreateFormData | ProjectUpdateFormData) => Promise<void>;
   initialData?: Project;
   isSubmitting?: boolean;
   mode?: 'create' | 'edit';
@@ -31,7 +31,7 @@ export function ProjectFormModal({
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<any>({
+  } = useForm<ProjectCreateFormData | ProjectUpdateFormData>({
     resolver: zodResolver(mode === 'edit' ? projectUpdateSchema : projectCreateSchema),
     defaultValues: initialData ? {
       name: initialData.name,
@@ -40,7 +40,7 @@ export function ProjectFormModal({
     } : undefined,
   });
 
-  const handleFormSubmit = async (data: ProjectCreateFormData) => {
+  const handleFormSubmit = async (data: ProjectCreateFormData | ProjectUpdateFormData) => {
     try {
       await onSubmit(data);
       reset();
@@ -96,7 +96,7 @@ export function ProjectFormModal({
               <option value="completed">Completed</option>
               <option value="archived">Archived</option>
             </select>
-            {errors.status && (
+            {'status' in errors && errors.status && (
               <p className="mt-1 text-sm text-red-600">{errors.status.message as string}</p>
             )}
           </div>
