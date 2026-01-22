@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
 import { getProjects } from '@/lib/projectsApi';
@@ -5,8 +6,10 @@ import { Card } from '@/components/ui/Card';
 import { ProjectsFilters } from './ProjectsFilters';
 import { PaginationControls } from './PaginationControls';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+// Cache for 60 seconds by default
+export const revalidate = 60;
+// Dynamic for URL parameters
+export const dynamicParams = true;
 
 interface PageProps {
   searchParams: Promise<{
@@ -14,6 +17,28 @@ interface PageProps {
     status?: string;
     page?: string;
   }>;
+}
+
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const params = await searchParams;
+  const status = params.status || 'all';
+  const search = params.search;
+  
+  let title = 'Projects';
+  let description = 'Browse and manage all your projects';
+  
+  if (search) {
+    title = `Search: ${search} | Projects`;
+    description = `Projects matching "${search}"`;
+  } else if (status !== 'all') {
+    title = `${status.charAt(0).toUpperCase() + status.slice(1)} Projects`;
+    description = `View all ${status} projects in your workspace`;
+  }
+  
+  return {
+    title,
+    description,
+  };
 }
 
 export default async function ProjectsPage({ searchParams }: PageProps) {

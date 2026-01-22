@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getProject } from '@/lib/projectsApi';
 import { getTasks } from '@/lib/tasksApi';
@@ -6,11 +7,43 @@ import { ProjectActions } from './ProjectActions';
 import { TaskBoardClient } from '@/components/tasks/TaskBoardClient';
 import Link from 'next/link';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+// Cache individual project pages for 60 seconds
+export const revalidate = 60;
+// Generate static params for known projects (optional)
+export const dynamicParams = true;
 
 interface PageProps {
   params: Promise<{ id: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  
+  try {
+    const project = await getProject(id);
+    
+    if (!project) {
+      return {
+        title: 'Project Not Found',
+        description: 'The requested project could not be found',
+      };
+    }
+    
+    return {
+      title: project.name,
+      description: project.description || `Manage tasks and details for ${project.name}`,
+      openGraph: {
+        title: project.name,
+        description: project.description || `Project: ${project.name}`,
+        type: 'website',
+      },
+    };
+  } catch (error) {
+    return {
+      title: 'Project',
+      description: 'View project details and tasks',
+    };
+  }
 }
 
 export default async function ProjectDetailPage({ params }: PageProps) {

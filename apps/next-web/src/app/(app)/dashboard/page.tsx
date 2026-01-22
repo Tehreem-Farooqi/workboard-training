@@ -1,4 +1,13 @@
+import type { Metadata } from 'next';
 import { Card } from '@/components/ui/Card';
+
+export const metadata: Metadata = {
+  title: 'Dashboard',
+  description: 'View your project statistics, active tasks, and productivity metrics',
+};
+
+// Cache for 60 seconds, then revalidate in background
+export const revalidate = 60;
 
 export default function DashboardPage() {
   return (
