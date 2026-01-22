@@ -7,8 +7,7 @@ A comprehensive 14-day training project to learn modern React and Next.js develo
 
 ##  Live Deployments
 
-- **Next.js Production:** [https://your-project.vercel.app](https://your-project.vercel.app) *(Update after deployment)*
-- **Preview (Develop Branch):** [https://your-project-git-develop.vercel.app](https://your-project-git-develop.vercel.app) *(Update after deployment)*
+- **Next.js Production:** https://vercel.com/tehreemfarooqis-projects/workboard-training
 
 ##  Features
 
@@ -59,7 +58,7 @@ A comprehensive 14-day training project to learn modern React and Next.js develo
 
 ### 1️Clone the Repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/workboard-training.git
+git clone https://github.com/Tehreem-Farooqi/workboard-training.git
 cd workboard-training
 ```
 
