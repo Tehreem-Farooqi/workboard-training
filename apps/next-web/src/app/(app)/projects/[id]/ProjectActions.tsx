@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
 import { ProjectFormModal } from '@/components/projects/ProjectFormModal';
 import type { Project } from '@/types/project';
-import type { ProjectCreateFormData } from '@/schemas/project.schema';
+import type { ProjectCreateFormData, ProjectUpdateFormData } from '@/schemas/project.schema';
 
 interface ProjectActionsProps {
   projectId: string;
@@ -22,7 +22,7 @@ export function ProjectActions({ projectId, initialData }: ProjectActionsProps) 
     setIsEditModalOpen(true);
   };
 
-  const handleUpdate = async (data: ProjectCreateFormData) => {
+  const handleUpdate = async (data: ProjectCreateFormData | ProjectUpdateFormData) => {
     setIsUpdating(true);
     try {
       const response = await fetch(`/api/projects/${projectId}`, {
