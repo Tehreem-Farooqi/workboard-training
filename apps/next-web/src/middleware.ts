@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
 
-export function middleware(_request: NextRequest) {
+export function middleware() {
   // Allow all routes - auth is handled client-side in layouts
   return NextResponse.next();
 }

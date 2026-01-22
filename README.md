@@ -1,40 +1,36 @@
-# 🚀 WorkBoard Training Project
 
-[![Next.js CI](https://github.com/YOUR_USERNAME/workboard-training/actions/workflows/next-ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/workboard-training/actions/workflows/next-ci.yml)
-[![React SPA Tests](https://github.com/YOUR_USERNAME/workboard-training/actions/workflows/test.yml/badge.svg)](https://github.com/YOUR_USERNAME/workboard-training/actions/workflows/test.yml)
-
-## 📋 Overview
+##  Overview
 
 A comprehensive 14-day training project to learn modern React and Next.js development, coming from a Blazor background. This repository contains two applications:
 - **React SPA** (Days 1-10): A Vite-powered React application with React Router, Zustand, and MSW
 - **Next.js App** (Days 11-14): A production-ready Next.js application with App Router, server components, and Vercel deployment
 
-## 🌐 Live Deployments
+##  Live Deployments
 
 - **Next.js Production:** [https://your-project.vercel.app](https://your-project.vercel.app) *(Update after deployment)*
 - **Preview (Develop Branch):** [https://your-project-git-develop.vercel.app](https://your-project-git-develop.vercel.app) *(Update after deployment)*
 
-## ✨ Features
+##  Features
 
 ### React SPA (`apps/react-spa`)
-- ✅ Project and Task Management
-- ✅ Client-side routing with React Router
-- ✅ State management with Zustand
-- ✅ API mocking with MSW (Mock Service Worker)
-- ✅ Form validation with React Hook Form + Zod
-- ✅ Comprehensive test coverage with Vitest
-- ✅ Tailwind CSS styling
+-  Project and Task Management
+-  Client-side routing with React Router
+-  State management with Zustand
+-  API mocking with MSW (Mock Service Worker)
+-  Form validation with React Hook Form + Zod
+-  Comprehensive test coverage with Vitest
+- Tailwind CSS styling
 
 ### Next.js App (`apps/next-web`)
-- ✅ Server and Client Components
-- ✅ App Router with layouts
-- ✅ API Routes
-- ✅ Middleware for authentication
-- ✅ Server Actions
-- ✅ Optimized performance (React Compiler, bundle analysis)
-- ✅ Production-ready with Vercel deployment
+-  Server and Client Components
+-  App Router with layouts
+-  API Routes
+-  Middleware for authentication
+-  Server Actions
+-  Optimized performance (React Compiler, bundle analysis)
+-  Production-ready with Vercel deployment
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 - **React 19** - UI library
@@ -55,19 +51,19 @@ A comprehensive 14-day training project to learn modern React and Next.js develo
 - **Vercel** - Hosting platform
 - **GitHub Actions** - CI/CD pipelines
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Node.js 20+ and npm
 - Git
 
-### 1️⃣ Clone the Repository
+### 1️Clone the Repository
 ```bash
 git clone https://github.com/YOUR_USERNAME/workboard-training.git
 cd workboard-training
 ```
 
-### 2️⃣ Run the Next.js App (Recommended)
+### 2Run the Next.js App (Recommended)
 ```bash
 cd apps/next-web
 npm install
@@ -79,7 +75,7 @@ Open [http://localhost:3000](http://localhost:3000)
 - Email: `admin@example.com`
 - Password: `password123`
 
-### 3️⃣ Run the React SPA (Optional)
+###  Run the React SPA (Optional)
 ```bash
 cd apps/react-spa
 npm install
@@ -87,7 +83,7 @@ npm run dev
 ```
 Open [http://localhost:5173](http://localhost:5173)
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 workboard-training/
@@ -123,7 +119,7 @@ workboard-training/
 └── README.md                  # This file
 ```
 
-## 🏗️ Architecture
+## Architecture
 
 ### Next.js App Architecture
 ```
@@ -164,7 +160,7 @@ workboard-training/
 
 See [docs/architecture/](docs/architecture/) for detailed architecture notes.
 
-## 🧪 Testing
+## Testing
 
 ### Run React SPA Tests
 ```bash
@@ -182,7 +178,7 @@ npm run lint          # Run ESLint
 npx tsc --noEmit      # Type check
 ```
 
-## 📦 Building for Production
+##  Building for Production
 
 ### Next.js Production Build
 ```bash
@@ -197,7 +193,7 @@ cd apps/next-web
 npm run analyze       # Opens bundle analyzer
 ```
 
-## 🚢 Deployment
+##  Deployment
 
 ### Deploy to Vercel
 
@@ -229,7 +225,7 @@ cd apps/next-web
 cp .env.example .env.local
 ```
 
-## 🔄 CI/CD Pipelines
+##  CI/CD Pipelines
 
 ### Next.js CI (`.github/workflows/next-ci.yml`)
 Runs on every push/PR to `main` or `develop`:
@@ -246,14 +242,14 @@ Runs on every push/PR:
 - Generate coverage report
 - Upload to Codecov
 
-## 📈 Performance
+##  Performance
 
 ### Optimization Features
-- ✅ React Compiler for automatic memoization
-- ✅ Next.js Image optimization
-- ✅ Bundle analysis with `@next/bundle-analyzer`
-- ✅ Code splitting via dynamic imports
-- ✅ Server components for reduced client JS
+-  React Compiler for automatic memoization
+-  Next.js Image optimization
+-  Bundle analysis with `@next/bundle-analyzer`
+-  Code splitting via dynamic imports
+-  Server components for reduced client JS
 
 ### Performance Targets
 - **FCP** (First Contentful Paint): < 1.5s
@@ -261,7 +257,7 @@ Runs on every push/PR:
 - **TTI** (Time to Interactive): < 3.0s
 - **CLS** (Cumulative Layout Shift): < 0.1
 
-## 📚 Learning Journey
+## Learning Journey
 
 This project follows a structured 14-day curriculum:
 
@@ -274,7 +270,7 @@ This project follows a structured 14-day curriculum:
 
 See [docs/daily-notes/](docs/daily-notes/) for detailed daily reflections.
 
-## 🎯 Key Learnings
+##  Key Learnings
 
 ### Coming from Blazor
 - **Component Model:** Similar to Blazor components, but with more explicit state management
@@ -286,7 +282,7 @@ See [docs/daily-notes/](docs/daily-notes/) for detailed daily reflections.
 - **React SPA:** Great for learning fundamentals, full client-side control
 - **Next.js:** Production-ready, better SEO, server components, built-in optimization
 
-## 🤝 Contributing
+##  Contributing
 
 This is a training project, but feedback is welcome!
 
@@ -296,23 +292,14 @@ This is a training project, but feedback is welcome!
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
+##  License
 
 This project is for educational purposes. Feel free to use it as a learning reference.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Next.js documentation and examples
 - React documentation
 - Vercel for hosting
 - The open-source community
 
-## 📞 Contact
-
-**Your Name** - [@yourtwitter](https://twitter.com/yourtwitter) - your.email@example.com
-
-**Project Link:** [https://github.com/YOUR_USERNAME/workboard-training](https://github.com/YOUR_USERNAME/workboard-training)
-
----
-
-**Built with ❤️ during a 14-day learning journey from Blazor to React/Next.js**
