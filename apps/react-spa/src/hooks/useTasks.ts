@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import { tasksApi } from '../api/tasks.api';
 import type { Task, CreateTaskDTO, UpdateTaskDTO, TaskStatus } from '../types/task';
+import type { TaskFilters } from '../utils/filterTypes';
 import { useUIStore } from '../stores/uiStore';
 
-export const useTasks = (projectId: string) => {
+export const useTasks = (projectId: string, filters?: TaskFilters) => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -13,7 +14,7 @@ export const useTasks = (projectId: string) => {
     try {
       setIsLoading(true);
       setError(null);
-      const data = await tasksApi.getAll(projectId);
+      const data = await tasksApi.getAll(projectId, filters);
       setTasks(data);
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to fetch tasks';
@@ -22,7 +23,7 @@ export const useTasks = (projectId: string) => {
     } finally {
       setIsLoading(false);
     }
-  }, [projectId, addToast]);
+  }, [projectId, filters, addToast]);
 
   useEffect(() => {
     fetchTasks();

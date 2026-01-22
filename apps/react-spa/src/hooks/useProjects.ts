@@ -2,19 +2,24 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { projectsApi } from '../api/projects.api';
 import type { CreateProjectDto, UpdateProjectDto } from '../types/project';
 import { useUIStore } from '../stores/uiStore';
+import type { ProjectFilters, PaginationParams } from '../utils/filterTypes';
 
 export const projectKeys = {
   all: ['projects'] as const,
   lists: () => [...projectKeys.all, 'list'] as const,
-  list: (filters?: unknown) => [...projectKeys.lists(), { filters }] as const,
+  list: (filters?: ProjectFilters, pagination?: PaginationParams) => 
+    [...projectKeys.lists(), { filters, pagination }] as const,
   details: () => [...projectKeys.all, 'detail'] as const,
   detail: (id: string) => [...projectKeys.details(), id] as const,
 };
 
-export function useProjects() {
+export function useProjects(
+  filters?: ProjectFilters,
+  pagination?: PaginationParams
+) {
   return useQuery({
-    queryKey: projectKeys.lists(),
-    queryFn: projectsApi.getProjects,
+    queryKey: projectKeys.list(filters, pagination),
+    queryFn: () => projectsApi.getProjects(filters, pagination),
   });
 }
 

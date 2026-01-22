@@ -22,3 +22,11 @@ export interface ProjectsResponse {
   projects: Project[];
   total: number;
 }
+
+export interface ProjectsResponse {
+  projects: Project[];
+  total: number;
+  page?: number;
+  pageSize?: number;
+  totalPages?: number;
+}

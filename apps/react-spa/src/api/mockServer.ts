@@ -10,7 +10,7 @@ const mockProjects: Project[] = [
     id: '1',
     name: 'Website Redesign',
     description: 'Complete overhaul of company website with modern design',
-    status: 'active',
+    status: 'archived',
     createdAt: new Date('2026-01-01').toISOString(),
     updatedAt: new Date('2026-01-01').toISOString(),
   },
