@@ -5,6 +5,7 @@ import { Card } from '../components/ui/Card';
 import { ProjectFormModal } from '../components/projects/ProjectFormModal';
 import { useProject, useUpdateProject, useDeleteProject } from '../hooks/useProjects';
 import type { ProjectCreateFormData } from '../schemas/project.schema';
+import { TaskBoard } from '../components/tasks/TaskBoard';
 
 export function ProjectDetailPage() {
   const { projectId } = useParams<{ projectId: string }>();
@@ -142,6 +143,11 @@ export function ProjectDetailPage() {
             </div>
           </div>
         </Card>
+
+        {/* Task Board */}
+        <div className="mt-8">
+          <TaskBoard projectId={projectId!} />
+        </div>
       </div>
 
       <ProjectFormModal
