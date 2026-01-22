@@ -1,4 +1,4 @@
-# 🎬 WorkBoard Demo Script
+#  WorkBoard Demo Script
 
 ## Overview
 This demo showcases the WorkBoard application - a modern project and task management system built with Next.js 16, React 19, and TypeScript.
@@ -8,7 +8,7 @@ This demo showcases the WorkBoard application - a modern project and task manage
 
 ---
 
-## 🎯 Demo Objectives
+##  Demo Objectives
 
 1. Showcase technical implementation quality
 2. Demonstrate key features and user flows
@@ -17,12 +17,7 @@ This demo showcases the WorkBoard application - a modern project and task manage
 
 ---
 
-## 🎪 DEMO FLOW
-
-### **INTRO (1 minute)**
-
-**Opening Statement:**
-> "Today I'll be demoing WorkBoard, a production-ready task management application I built during a 14-day intensive learning journey from Blazor to React and Next.js. This demo will cover the live application, key technical features, and the development workflow."
+## DEMO FLOW
 
 **Quick Overview:**
 - Built with Next.js 16, React 19, TypeScript
@@ -36,7 +31,7 @@ This demo showcases the WorkBoard application - a modern project and task manage
 ### **PART 1: Live Application Demo (5-7 minutes)**
 
 #### 1.1 Authentication Flow (1 min)
-**Navigate to:** [Production URL]
+**Navigate to:** http://localhost:3000/login
 
 **Script:**
 > "Let's start with the authentication flow. The app uses middleware-protected routes with secure session storage."
@@ -186,7 +181,7 @@ apps/next-web/
    - Show scores (Performance, Accessibility, Best Practices, SEO)
 
 **Script:**
-> "Performance was a key focus. The app uses several Next.js optimization features."
+ "Performance was a key focus. The app uses several Next.js optimization features."
 
 **Talking Points:**
 - React Compiler for automatic memoization
@@ -208,7 +203,7 @@ apps/next-web/
    - Show code review process
 
 **Script:**
-> "The project has a robust CI/CD pipeline. Every push triggers automated linting, type checking, and builds."
+ "The project has a robust CI/CD pipeline. Every push triggers automated linting, type checking, and builds."
 
 **Talking Points:**
 - GitHub Actions for CI/CD
@@ -305,138 +300,29 @@ npm run test:coverage
 
 ---
 
-## 🎯 KEY TALKING POINTS CHEAT SHEET
+##  KEY TALKING POINTS CHEAT SHEET
 
 ### Technical Highlights
-- ✅ Next.js 16 with App Router
-- ✅ React 19 with Server Components
-- ✅ TypeScript for type safety
-- ✅ React Hook Form + Zod validation
-- ✅ Zustand state management
-- ✅ Tailwind CSS styling
-- ✅ React Compiler optimization
+-  Next.js 16 with App Router
+-  React 19 with Server Components
+-  TypeScript for type safety
+-  React Hook Form + Zod validation
+-  Zustand state management
+-  Tailwind CSS styling
+-  React Compiler optimization
 
 ### Best Practices
-- ✅ Clean code architecture
-- ✅ Comprehensive testing (Vitest)
-- ✅ CI/CD pipeline (GitHub Actions)
-- ✅ Automated deployments (Vercel)
-- ✅ Performance optimization
-- ✅ Mobile-first responsive design
-- ✅ Accessibility considerations
+-  Clean code architecture
+-  Comprehensive testing (Vitest)
+-  CI/CD pipeline (GitHub Actions)
+-  Automated deployments (Vercel)
+-  Performance optimization
+-  Mobile-first responsive design
+-  Accessibility considerations
 
 ### Learning Journey
-- ✅ 14-day structured curriculum
-- ✅ Coming from Blazor background
-- ✅ Daily documentation
-- ✅ Progressive feature building
-- ✅ Real-world application patterns
-
----
-
-## 🛠️ DEMO PREPARATION CHECKLIST
-
-### Before Demo Day
-- [ ] Test all features in production
-- [ ] Verify no console errors
-- [ ] Clear browser history/cache
-- [ ] Prepare test data (projects, tasks)
-- [ ] Check all URLs are accessible
-- [ ] Verify CI/CD pipelines passing
-- [ ] Prepare VS Code workspace
-- [ ] Have GitHub repo open in tab
-- [ ] Have Vercel dashboard ready
-- [ ] Test internet connection
-- [ ] Close unnecessary applications
-- [ ] Set browser zoom to 100%
-
-### 5 Minutes Before Demo
-- [ ] Close all unrelated browser tabs
-- [ ] Open required tabs:
-  - Production app
-  - GitHub repository
-  - Vercel dashboard
-  - VS Code
-- [ ] Clear console in DevTools
-- [ ] Test microphone (if presenting remotely)
-- [ ] Have water nearby
-- [ ] Deep breath! 😊
-
----
-
-## ❓ ANTICIPATED QUESTIONS & ANSWERS
-
-### Q: "Why Next.js instead of plain React?"
-**A:** "Next.js provides production-ready features out of the box: server components for better performance, built-in routing, API routes, and optimal deployment with Vercel. For a production app, it saves significant setup time and provides better SEO and initial load performance."
-
-### Q: "How does this compare to Blazor?"
-**A:** "Both have component-based architectures, but Next.js gives more flexibility with client/server rendering choices. The JavaScript ecosystem has more libraries and tools. Blazor's C# integration is great, but React's broader adoption means more community support and resources."
-
-### Q: "What was the biggest challenge?"
-**A:** "Shifting mental model from Blazor's two-way binding to React's unidirectional data flow. Also, understanding when to use server vs client components in Next.js. The documentation and community resources helped tremendously."
-
-### Q: "How long did this take?"
-**A:** "14 days following a structured curriculum. Days 1-10 focused on React fundamentals with a SPA, days 11-13 on Next.js, and day 14 on deployment and polish. Total: about 80-100 hours of focused learning and building."
-
-### Q: "What's next for this project?"
-**A:** "Potential enhancements include: real backend integration (replacing mocks), user management, team collaboration features, real-time updates with WebSockets, and more advanced analytics."
-
-### Q: "Is this production-ready?"
-**A:** "The architecture and patterns are production-ready. It would need a real backend, database, proper authentication (Auth0/NextAuth), and security hardening for actual production use. But the frontend implementation follows industry best practices."
-
----
-
-## 🎥 ALTERNATIVE DEMO FORMATS
-
-### Short Version (5 minutes)
-1. Quick app walkthrough (2 min)
-2. Code structure overview (1 min)
-3. CI/CD and deployment (1 min)
-4. Q&A (1 min)
-
-### Extended Version (20 minutes)
-1. Full application demo (10 min)
-2. Deep dive into code (5 min)
-3. Testing and performance (3 min)
-4. Q&A (2 min)
-
-### Technical Deep Dive (30 minutes)
-1. Quick app demo (5 min)
-2. Architecture walkthrough (10 min)
-3. Implementation details (10 min)
-4. Q&A and discussion (5 min)
-
----
-
-## 📸 SCREENSHOT OPPORTUNITIES
-
-Capture these moments for documentation:
-1. Login page
-2. Projects dashboard (with data)
-3. Project details with tasks
-4. Task creation form
-5. Mobile responsive view
-6. Vercel deployment dashboard
-7. GitHub Actions passing builds
-8. Lighthouse performance scores
-9. VS Code workspace
-10. Test coverage report
-
----
-
-## 💡 TIPS FOR SUCCESSFUL DEMO
-
-1. **Practice:** Run through 2-3 times before actual demo
-2. **Timing:** Keep to schedule, adjust based on audience interest
-3. **Backup:** Have screenshots ready if live demo fails
-4. **Energy:** Show enthusiasm about what you built
-5. **Honesty:** Acknowledge learning journey and areas for improvement
-6. **Engage:** Ask if audience has questions throughout
-7. **Focus:** Highlight what's most relevant to your audience
-8. **Technical Issues:** Have fallback plan (screen recording)
-
----
-
-**Good luck with your demo! 🚀**
-
-*Remember: You built this in 14 days. That's impressive. Be confident!*
+-  14-day structured curriculum
+-  Coming from Blazor background
+-  Daily documentation
+-  Progressive feature building
+-  Real-world application patterns
