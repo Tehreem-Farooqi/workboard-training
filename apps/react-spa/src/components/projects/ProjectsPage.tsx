@@ -1,42 +1,34 @@
 import { useState } from 'react';
-import { Card } from '../components/ui/Card';
-import { Button } from '../components/ui/Button';
-import { ProjectFormModal } from '../components/projects/ProjectFormModal';
-import type { ProjectCreateFormData } from '../schemas/project.schema';
-
+import { Card } from '../ui/Card';
+import { Button } from '../ui/Button';
+import { ProjectFormModal } from './ProjectFormModal';
+import type { ProjectCreateFormData } from '../../schemas/project.schema';
 interface Project {
   id: string;
   name: string;
   description?: string;
 }
-
 export function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([
     { id: '1', name: 'Website Redesign', description: 'Modernize company website' },
     { id: '2', name: 'Mobile App', description: 'Build iOS and Android app' },
     { id: '3', name: 'API Integration', description: 'Connect to third-party services' },
   ]);
-
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [editingProject, setEditingProject] = useState<Project | null>(null);
-
   const handleCreateProject = async (data: ProjectCreateFormData) => {
     // TODO: Replace with actual API call
     await new Promise((resolve) => setTimeout(resolve, 500));
-
     const newProject: Project = {
       id: Date.now().toString(),
       name: data.name,
       description: data.description,
     };
-
     setProjects([...projects, newProject]);
   };
-
   const handleEditProject = async (data: ProjectCreateFormData) => {
     // TODO: Replace with actual API call
     await new Promise((resolve) => setTimeout(resolve, 500));
-
     if (editingProject) {
       setProjects(
         projects.map((p) =>
@@ -48,13 +40,11 @@ export function ProjectsPage() {
       setEditingProject(null);
     }
   };
-
   const handleDeleteProject = (id: string) => {
     if (confirm('Are you sure you want to delete this project?')) {
       setProjects(projects.filter((p) => p.id !== id));
     }
   };
-
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
@@ -63,7 +53,6 @@ export function ProjectsPage() {
           New Project
         </Button>
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project) => (
           <Card key={project.id} title={project.name}>
@@ -89,7 +78,6 @@ export function ProjectsPage() {
           </Card>
         ))}
       </div>
-
       {/* Create Modal */}
       <ProjectFormModal
         isOpen={isCreateModalOpen}
@@ -97,7 +85,6 @@ export function ProjectsPage() {
         onSubmit={handleCreateProject}
         mode="create"
       />
-
       {/* Edit Modal */}
       {editingProject && (
         <ProjectFormModal
